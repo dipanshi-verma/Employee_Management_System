@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Management Portal</title>
+    <style>
+        *{
+            background-color: #f0f0f0;
+
+        }
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 30px;
+        }
+        form input,form button{
+            margin:5px;
+            padding: 8px;
+            box-shadow: blue;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            outline: none;
+            transition: all 0.2s ease;
+            width:200px;
+   
+           
+        }
+        
+        button{
+            padding: 8px 16px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        form {
+            max-width: 400px;
+            margin-bottom: 20px;
+            }
+        button:hover {
+             background-color: #0056b3;
+            }
+        table{
+            margin-top:20px;
+            width:100%;
+            border-collapse: collapse;
+        }
+        th,td{
+            border:1px solid grey;
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h2>Employee Management Portal</h2>
+    <form action="" method="get" id="employee-form">
+        <input type="text" id = "name" placeholder="Name" required>
+        <input type="email" id = "email" placeholder="Email" required>
+        <input type="text" id = "role" placeholder="Role" required>
+        <button type="submit">Add Employee</button>
+
+    </form>
+    <table id="employee-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+        </tbody>
+
+    </table>
+    <script src="app.js"></script>
+</body>
+</html>
