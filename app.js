@@ -7,8 +7,17 @@ const emailInput = document.getElementById("email");
 const roleInput = document.getElementById("role");
 const tableBody = document.querySelector("#employee-table tbody");
 
+
+const storedEmployees = localStorage.getItem("employees");
+if(storedEmployees)
+{
+    employees = JSON.parse(storedEmployees);
+    renderTable();
+}
+
 // EVENT LISTENER FOR ADDING OR UPDATING EMPLOYEE
-form.addEventListener("submit", function(e){
+form.addEventListener("submit", function(e)
+{
  e.preventDefault();
  const name = nameInput.value.trim();
  const email = emailInput.value.trim();
@@ -19,6 +28,7 @@ form.addEventListener("submit", function(e){
     if(!name||!email||!role) return ;
 
     const employeeData={name,email,role};
+    
 
     if(editIndex === null)
     {
@@ -29,8 +39,13 @@ form.addEventListener("submit", function(e){
         editIndex = null;
         form.querySelector("button").innerHTML = "Add Employee";
     }
+   
+    localStorage.setItem("employees", JSON.stringify(employees));
+
     form.reset();
     renderTable();
+
+    
 })
 
 
@@ -45,8 +60,8 @@ form.addEventListener("submit", function(e){
             <td>${emp.email}</td>
             <td>${emp.role}</td>
             <td class = "action-btns">
-            <button onclick = "editEmployee(${index})">Edit</button>
-            <button onclick = "deleteEmployee(${index})">Delete</button>
+            <button onclick = "editEmployee(${index})" class = "btn">Edit</button>
+            <button onclick = "deleteEmployee(${index})" class = "btn">Delete</button>
             </td>
             `
             tableBody.appendChild(row);
@@ -62,6 +77,7 @@ form.addEventListener("submit", function(e){
         roleInput.value = emp.role;
         editIndex = index;
         form.querySelector("button").innerHTML = "Update Employee";
+       
     }
 
 
@@ -70,6 +86,8 @@ form.addEventListener("submit", function(e){
         if(confirm("Are you sure you want to delete this employee?"))
         {
             employees.splice(index,1);
+            localStorage.setItem("employees", JSON.stringify(employees));
+            
             renderTable();
         }
     }
